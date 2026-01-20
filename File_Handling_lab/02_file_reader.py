@@ -1,0 +1,4 @@
+from constants import ABSOLUTE_PROJECT_PATH
+
+
+print(ABSOLUTE_PROJECT_PATH)
