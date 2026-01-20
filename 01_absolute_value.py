@@ -6,3 +6,5 @@ for num in range(len(num_list)):
     final_list.append(abs(float(num_list[num])))
 
 print(final_list)
+
+# print("test")
