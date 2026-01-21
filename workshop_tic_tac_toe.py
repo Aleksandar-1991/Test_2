@@ -27,6 +27,11 @@ players = {
     first_player: "",
     second_player: ""
 }
+
+def print_board(mat):
+    for row in mat:
+        print(" ".join(f"|{"|".join(row)}|"))
+
 def play_option_verification(user_input):
     if user_input not in "123456789":
         return False
@@ -72,7 +77,7 @@ def check_for_winners(matrix, char, r, c):
 # winner = ""
 play_options = ["O", "X"]
 while not players[first_player]:
-     player_one_choice = input(f"{first_player} would like to play with 'X' or 'O'?")
+     player_one_choice = input(f"{first_player} would like to play with 'X' or 'O'?").upper()
      if player_one_choice not in play_options:
         print("Wrong option! Please choose between 'X' or 'O'.")
      else:
@@ -82,12 +87,12 @@ players[second_player] = play_options[0]
 play_options = ""
 
 print("This is the numeration of the board:")
-[print("".join(row)) for row in numerated_board]
+[print(" ".join(row)) for row in numerated_board]
 print(f"{first_player} starts first!")
 
 last_turn = second_player
 
-while True:
+while free_positions:
     current_player = ""
     if last_turn == second_player:
         current_player = first_player
@@ -107,14 +112,15 @@ while True:
             current_row, current_col = mapper[chosen_position]
             board[current_row][current_col] = current_symbol
             free_positions.remove(chosen_position)
-            for row in board:
-                print(f"|{"|".join(row)}|")
+            print_board(board)
 
             if check_for_winners(board, current_symbol, current_row , current_col):
                 print(f"{current_player} is the winner!")
                 exit()
             else:
                 break
+
+print("It's a draw..")
 
 
 
