@@ -120,7 +120,7 @@ while free_positions:
             else:
                 break
 
-print("It's a draw..")
+print("It's a draw...")
 
 
 
